@@ -1,4 +1,5 @@
 import readlineSync from 'readline-sync';
+import getRandom from './utils.js';
 
 let playerName;
 
@@ -11,13 +12,13 @@ let playerAnswer;
 let correctAnswer;
 
 const getAnswer = () => {
-  const randomNumber = Math.ceil(Math.random() * 100);
+  const randomNumber = getRandom(1, 100);
   console.log(`Question: ${randomNumber}`);
   playerAnswer = readlineSync.question('Your answer: ');
   correctAnswer = (randomNumber % 2 === 0) ? 'yes' : 'no';
 };
 
-const gameEven = () => {
+const startGame = () => {
   getName();
   console.log(`Hello, ${playerName}!`);
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
@@ -36,4 +37,4 @@ const gameEven = () => {
   return console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${playerName}!`);
 };
 
-export default gameEven;
+export default startGame;
