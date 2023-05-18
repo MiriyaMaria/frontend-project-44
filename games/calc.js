@@ -1,33 +1,29 @@
 import readlineSync from 'readline-sync';
-import { getRandom } from './utils.js';
+import { playerName, getName } from '../src/index.js';
+import { getRandom, randomElement } from '../src/utils.js';
 
-export let playerName;
-
-export const getName = () => {
-  console.log('Welcome to the Brain Games!');
-  playerName = readlineSync.question('May I have your name? ');
-};
+const rule = 'What is the result of the expression?';
 
 let playerAnswer;
 let correctAnswer;
 
+const operators = ['+', '-', '*'];
+
 export const getAnswer = () => {
-  const randomNumber = getRandom(1, 100);
-  console.log(`Question: ${randomNumber}`);
+  const randomExpression = getRandom(1, 20) + randomElement(operators) + getRandom(1, 20);
+  console.log(`Question: ${randomExpression}`);
   playerAnswer = readlineSync.question('Your answer: ');
-  correctAnswer = (randomNumber % 2 === 0) ? 'yes' : 'no';
+  correctAnswer = eval(randomExpression);
 };
 
-const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
-
-const startGame = () => {
+const playCalc = () => {
   getName();
   console.log(`Hello, ${playerName}!`);
   console.log(`${rule}`);
   let count = 0;
   for (; count < 3;) {
     getAnswer();
-    if (playerAnswer !== correctAnswer) {
+    if (Number(playerAnswer) !== correctAnswer) {
       break;
     }
     console.log('Correct!');
@@ -39,4 +35,4 @@ const startGame = () => {
   return console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${playerName}!`);
 };
 
-export default startGame;
+export default playCalc;
