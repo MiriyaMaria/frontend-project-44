@@ -1,26 +1,23 @@
 import readlineSync from 'readline-sync';
 import { getRandom } from './utils.js';
 
-export let playerName;
+const startGame = (rule) => {
+  let playerName;
+  const getName = () => {
+    console.log('Welcome to the Brain Games!');
+    playerName = readlineSync.question('May I have your name? ');
+  };
 
-export const getName = () => {
-  console.log('Welcome to the Brain Games!');
-  playerName = readlineSync.question('May I have your name? ');
-};
+  let playerAnswer;
+  let correctAnswer;
 
-let playerAnswer;
-let correctAnswer;
+  const getAnswer = () => {
+    const randomNumber = getRandom(1, 100);
+    console.log(`Question: ${randomNumber}`);
+    playerAnswer = readlineSync.question('Your answer: ');
+    correctAnswer = (randomNumber % 2 === 0) ? 'yes' : 'no';
+  };
 
-export const getAnswer = () => {
-  const randomNumber = getRandom(1, 100);
-  console.log(`Question: ${randomNumber}`);
-  playerAnswer = readlineSync.question('Your answer: ');
-  correctAnswer = (randomNumber % 2 === 0) ? 'yes' : 'no';
-};
-
-const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
-
-const startGame = () => {
   getName();
   console.log(`Hello, ${playerName}!`);
   console.log(`${rule}`);
