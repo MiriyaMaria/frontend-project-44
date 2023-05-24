@@ -1,30 +1,23 @@
 import readlineSync from 'readline-sync';
-import { getRandom } from './utils.js';
 
-const startGame = (rule) => {
+const startGame = (rule, game) => {
   let playerName;
   const getName = () => {
     console.log('Welcome to the Brain Games!');
     playerName = readlineSync.question('May I have your name? ');
   };
 
-  let playerAnswer;
-  let correctAnswer;
-
-  const getAnswer = () => {
-    const randomNumber = getRandom(1, 100);
-    console.log(`Question: ${randomNumber}`);
-    playerAnswer = readlineSync.question('Your answer: ');
-    correctAnswer = (randomNumber % 2 === 0) ? 'yes' : 'no';
-  };
-
   getName();
   console.log(`Hello, ${playerName}!`);
   console.log(`${rule}`);
+  let playerAnswer;
+  let dataForRound;
   let count = 0;
   for (; count < 3;) {
-    getAnswer();
-    if (playerAnswer !== correctAnswer) {
+    dataForRound = game();
+    console.log(`Question: ${dataForRound.question}`); // Задаем вопрос
+    playerAnswer = readlineSync.question('Your answer: '); // Записываем ответ пользователя
+    if (playerAnswer !== dataForRound.correctAnswer) {
       break;
     }
     console.log('Correct!');
@@ -33,7 +26,7 @@ const startGame = (rule) => {
   if (count === 3) {
     return console.log(`Congratulations, ${playerName}!`);
   }
-  return console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${playerName}!`);
+  return console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${dataForRound.correctAnswer}'. \nLet's try again, ${playerName}!`);
 };
 
 export default startGame;
