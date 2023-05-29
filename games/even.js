@@ -1,6 +1,7 @@
 import startGame from '../src/index.js';
 import { getRandom } from '../src/utils.js';
 
+// описание задания:
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 // вычисление правильного ответа
