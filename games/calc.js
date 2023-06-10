@@ -6,18 +6,20 @@ const description = 'What is the result of the expression?';
 
 // вычисление правильного ответа
 const doMath = (str) => {
-  let result = 0;
-  if (str.includes('+')) {
-    const operand = str.split('+');
-    result = +operand[0] + +operand[1];
-  }
-  if (str.includes('-')) {
-    const operand = str.split('-');
-    result = +operand[0] - +operand[1];
-  }
-  if (str.includes('*')) {
-    const operand = str.split('*');
-    result = +operand[0] * +operand[1];
+  let result;
+  const [num1, operation, num2] = str.split(' ');
+  switch (operation) {
+    case '+':
+      result = +num1 + +num2;
+      break;
+    case '-':
+      result = +num1 - +num2;
+      break;
+    case '*':
+      result = +num1 * +num2;
+      break;
+    default:
+      result = 0;
   }
   return result;
 };
@@ -25,7 +27,7 @@ const doMath = (str) => {
 
 const getAnswer = () => {
   const operators = ['+', '-', '*'];
-  const question = getRandom(1, 20) + randomElement(operators) + getRandom(1, 20);
+  const question = `${getRandom(1, 20)} ${randomElement(operators)} ${getRandom(1, 20)}`;
   const correctAnswer = String(doMath(question));
   return { question, correctAnswer };
 };
