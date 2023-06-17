@@ -1,5 +1,5 @@
-import startGame from '../src/index.js';
-import { getRandom } from '../src/utils.js';
+import startGame from '../index.js';
+import { getRandom } from '../utils.js';
 
 // описание задания:
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';

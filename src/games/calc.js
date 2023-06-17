@@ -1,5 +1,5 @@
-import startGame from '../src/index.js';
-import { getRandom, randomElement } from '../src/utils.js';
+import startGame from '../index.js';
+import { getRandom, randomElement } from '../utils.js';
 
 // описание задания:
 const description = 'What is the result of the expression?';
