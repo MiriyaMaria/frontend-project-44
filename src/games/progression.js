@@ -1,5 +1,5 @@
 import startGame from '../index.js';
-import { getRandom } from '../utils.js';
+import getRandom from '../utils.js';
 
 // описание задания:
 const description = 'What number is missing in the progression?';

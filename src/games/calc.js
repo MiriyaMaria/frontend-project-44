@@ -1,34 +1,31 @@
 import startGame from '../index.js';
-import { getRandom, randomElement } from '../utils.js';
+import getRandom from '../utils.js';
 
 // описание задания:
 const description = 'What is the result of the expression?';
 
 // вычисление правильного ответа
-const doMath = (str) => {
-  let result;
-  const [num1, operation, num2] = str.split(' ');
+const doMath = (num1, operation, num2) => {
   switch (operation) {
     case '+':
-      result = +num1 + +num2;
-      break;
+      return num1 + num2;
     case '-':
-      result = +num1 - +num2;
-      break;
+      return num1 - num2;
     case '*':
-      result = +num1 * +num2;
-      break;
+      return num1 * num2;
     default:
-      result = 0;
+      return 0;
   }
-  return result;
 };
 // данные для вопроса:
 
 const getAnswer = () => {
   const operators = ['+', '-', '*'];
-  const question = `${getRandom(1, 20)} ${randomElement(operators)} ${getRandom(1, 20)}`;
-  const correctAnswer = String(doMath(question));
+  const operand1 = getRandom(1, 20);
+  const operator = operators[getRandom(0, 2)];
+  const operand2 = getRandom(1, 20);
+  const question = operand1 + operator + operand2;
+  const correctAnswer = String(doMath(operand1, operator, operand2));
   return { question, correctAnswer };
 };
 
