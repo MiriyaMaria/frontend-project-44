@@ -6,11 +6,9 @@ const description = 'What number is missing in the progression?';
 
 // вычисления для вопроса
 const arithmeticSequence = (firstElement, difference, sequenceLength) => {
-  const result = [firstElement];
-  let i = sequenceLength;
-  while (i > 0) {
-    result.push(firstElement += difference); // eslint-disable-line no-param-reassign
-    i -= 1;
+  const result = [];
+  for (let i = 0; i < sequenceLength; i += 1) {
+    result.push(firstElement + i * difference);
   }
   return result;
 };
