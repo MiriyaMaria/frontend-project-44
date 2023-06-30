@@ -24,7 +24,7 @@ const getAnswer = () => {
   const operand1 = getRandom(1, 20);
   const operator = operators[getRandom(0, 2)];
   const operand2 = getRandom(1, 20);
-  const question = operand1 + operator + operand2;
+  const question = `${operand1}${operator}${operand2}`;
   const correctAnswer = String(doMath(operand1, operator, operand2));
   return { question, correctAnswer };
 };
