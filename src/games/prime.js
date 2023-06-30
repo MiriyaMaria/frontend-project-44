@@ -6,11 +6,11 @@ const description = 'Answer "yes" if given number is prime. Otherwise answer "no
 
 // вычисление правильного ответа
 const isPrime = (number) => {
-  if (number === 1) {
+  if (number < 2) {
     return false;
   }
-  for (let i = 2; i < number; i += 1) {
-    if (number % i === 0 && number !== 2) {
+  for (let i = 2; i < Math.sqrt(number); i += 1) {
+    if (number % i === 0) {
       return false;
     }
   }
