@@ -20,7 +20,7 @@ const getAnswer = () => {
   const progressionLength = getRandom(5, 10);
   const dataForQuestion = arithmeticSequence(startValue, progressionStep, progressionLength);
 
-  const indexOfHiddenElement = getRandom(0, progressionLength);
+  const indexOfHiddenElement = getRandom(0, progressionLength - 1);
   const correctAnswer = String(dataForQuestion[indexOfHiddenElement]);
   dataForQuestion[indexOfHiddenElement] = '..';
   const question = dataForQuestion.join(' ');

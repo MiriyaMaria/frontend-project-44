@@ -5,23 +5,17 @@ const startGame = (rule, game) => {
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
   console.log(`${rule}`);
-  let playerAnswer;
-  let dataForRound;
-  let count = 0;
-  for (; count < 3;) {
-    dataForRound = game();
-    console.log(`Question: ${dataForRound.question}`); // Задаем вопрос
-    playerAnswer = readlineSync.question('Your answer: '); // Записываем ответ пользователя
-    if (playerAnswer !== dataForRound.correctAnswer) {
-      console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${dataForRound.correctAnswer}'. \nLet's try again, ${playerName}!`);
+  for (let count = 0; count < 3; count += 1) {
+    const { question, correctAnswer } = game();
+    console.log(`Question: ${question}`); // Задаем вопрос
+    const playerAnswer = readlineSync.question('Your answer: '); // Записываем ответ пользователя
+    if (playerAnswer !== correctAnswer) {
+      console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${playerName}!`);
       return;
     }
     console.log('Correct!');
-    count += 1;
   }
-  if (count === 3) {
-    console.log(`Congratulations, ${playerName}!`);
-  }
+  console.log(`Congratulations, ${playerName}!`);
 };
 
 export default startGame;
