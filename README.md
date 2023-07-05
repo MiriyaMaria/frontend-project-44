@@ -6,8 +6,8 @@ This package includes 5 fun games to train your mind.
 ## Minimum system requirements
 Node.js v18.16.0
 ## Installation
-`make install`
-`npm link`
+```make install```
+```npm link```
 ## Games:
 **brain-even:** Answer if given number is even.
 Start playing `brain-even`
