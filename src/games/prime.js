@@ -1,5 +1,5 @@
 import startGame from '../index.js';
-import getRandom from '../utils.js';
+import getRandomNumber from '../utils.js';
 
 // описание задания:
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -18,12 +18,12 @@ const isPrime = (number) => {
 };
 
 // данные для вопроса:
-const getAnswer = () => {
-  const question = getRandom(1, 100);
+const getQuestionAndCorrectAnswer = () => {
+  const question = getRandomNumber(1, 100);
   const correctAnswer = isPrime(question) ? 'yes' : 'no';
   return { question, correctAnswer };
 };
 
-const startPrime = () => startGame(description, getAnswer);
+const startPrime = () => startGame(description, getQuestionAndCorrectAnswer);
 
 export default startPrime;

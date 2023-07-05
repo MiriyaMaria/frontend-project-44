@@ -3,7 +3,10 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/3f379166a6fed1d1b867/maintainability)](https://codeclimate.com/github/MiriyaMaria/frontend-project-44/maintainability)
 # Brain Games
 This package includes 5 fun games to train your mind.
+## Minimum system requirements
+Node.js v18.16.0
 ## Installation
+`make install`
 `npm link`
 ## Games:
 **brain-even:** Answer if given number is even.

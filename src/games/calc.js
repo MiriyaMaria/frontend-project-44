@@ -1,5 +1,5 @@
 import startGame from '../index.js';
-import getRandom from '../utils.js';
+import getRandomNumber from '../utils.js';
 
 // описание задания:
 const description = 'What is the result of the expression?';
@@ -14,21 +14,21 @@ const doMath = (num1, operation, num2) => {
     case '*':
       return num1 * num2;
     default:
-      return 0;
+      throw new Error(`Unknown operation: '${operation}'!`);
   }
 };
 // данные для вопроса:
 
-const getAnswer = () => {
+const getQuestionAndCorrectAnswer = () => {
   const operators = ['+', '-', '*'];
-  const operand1 = getRandom(1, 20);
-  const operator = operators[getRandom(0, 2)];
-  const operand2 = getRandom(1, 20);
+  const operand1 = getRandomNumber(1, 20);
+  const operator = operators[getRandomNumber(0, 2)];
+  const operand2 = getRandomNumber(1, 20);
   const question = `${operand1} ${operator} ${operand2}`;
   const correctAnswer = String(doMath(operand1, operator, operand2));
   return { question, correctAnswer };
 };
 
-const startCalc = () => startGame(description, getAnswer);
+const startCalc = () => startGame(description, getQuestionAndCorrectAnswer);
 
 export default startCalc;
